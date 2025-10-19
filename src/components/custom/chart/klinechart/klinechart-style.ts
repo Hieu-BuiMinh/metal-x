@@ -1,6 +1,7 @@
 import type { DeepPartial, Styles } from 'klinecharts'
 
-export const klineChartsLightStyle: DeepPartial<Styles> = {
+export const klineChartLightStyle: DeepPartial<Styles> = {
+	indicator: { tooltip: { showRule: 'none' } },
 	grid: {
 		show: true,
 		horizontal: {
@@ -28,7 +29,8 @@ export const klineChartsLightStyle: DeepPartial<Styles> = {
 	},
 }
 
-export const klineChartsDarkStyle: DeepPartial<Styles> = {
+export const klineChartDarkStyle: DeepPartial<Styles> = {
+	indicator: { tooltip: { showRule: 'none' } },
 	grid: {
 		horizontal: {
 			color: 'oklch(1 0 0 / 10%)',

@@ -1,11 +1,11 @@
-import AppLayout from '@/components/custom/layouts/app-layout'
 import { ThemeProvider } from '@/components/custom/providers/theme-provider'
+import { NuqsAdapter } from 'nuqs/adapters/react-router/v7'
 import { type ReactNode } from 'react'
 
 function AppProvider({ children }: { children: ReactNode }) {
 	return (
 		<ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
-			<AppLayout>{children}</AppLayout>
+			<NuqsAdapter>{children}</NuqsAdapter>
 		</ThemeProvider>
 	)
 }

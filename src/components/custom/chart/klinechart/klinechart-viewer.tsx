@@ -1,8 +1,8 @@
-import { klineChartsDarkStyle, klineChartsLightStyle } from '@/components/chart/klinecharts-style'
-import { dispose, init, type Chart, type Nullable } from 'klinecharts'
-import { useEffect, useRef } from 'react'
-import './kline-style-overwrite.css'
+import { klineChartDarkStyle, klineChartLightStyle } from '@/components/custom/chart/klinechart/klinechart-style'
 import { useTheme } from '@/components/custom/providers/theme-provider'
+import { dispose, init, type Chart, type Nullable } from 'klinecharts'
+import { memo, useEffect, useRef } from 'react'
+import './kline-style-overwrite.css'
 
 function KlinechartsViewer() {
 	const { theme } = useTheme()
@@ -36,16 +36,29 @@ function KlinechartsViewer() {
 	useEffect(() => {
 		if (!currentChart.current) return
 		if (theme === 'light') {
-			return currentChart.current?.setStyles(klineChartsLightStyle)
+			return currentChart.current?.setStyles(klineChartLightStyle)
 		}
-        currentChart.current?.setStyles(klineChartsDarkStyle)
+		currentChart.current?.setStyles(klineChartDarkStyle)
 	}, [theme])
 
+	useEffect(() => {
+		const handleResize = () => {
+			currentChart.current?.resize()
+		}
+		window.addEventListener('resize', handleResize)
+
+		return () => {
+			window.removeEventListener('resize', handleResize)
+		}
+	}, [])
+
 	return (
-		<div className="w-full p-3 rounded-lg border bg-[#f8f8f8] dark:bg-[#161616]">
-			<div id="klinecharts-viewer" className="w-full h-[500px]" />
+		<div className="flex p-3 rounded-lg border bg-[#f8f8f8] dark:bg-[#161616] font-mono">
+			<div className="w-full h-[500px] relative">
+				<div id="klinecharts-viewer" className="w-full absolute inset-0" />
+			</div>
 		</div>
 	)
 }
 
-export default KlinechartsViewer
+export default memo(KlinechartsViewer)

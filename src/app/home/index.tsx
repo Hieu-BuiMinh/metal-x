@@ -1,15 +1,10 @@
-import KlinechartsViewer from '@/components/chart/klinecharts-viewer'
-import { ModeToggle } from '@/components/custom/theme/mode-toggle'
-
+import KlinechartsViewer from '@/components/custom/chart/klinechart/klinechart-viewer'
 
 function HomePage() {
-	
-
 	return (
-		<div className='p-5'>
-			<ModeToggle />
+		<>
 			<KlinechartsViewer />
-		</div>
+		</>
 	)
 }
 
