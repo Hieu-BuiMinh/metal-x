@@ -1,0 +1,9 @@
+.dark :root {
+	--grid-horizontal-color: oklch(1 0 0 / 10%);
+	--grid-vertical-color: oklch(1 0 0 / 10%);
+}
+
+:root {
+	--grid-horizontal-color: oklch(0.922 0 0);
+	--grid-vertical-color: oklch(0.922 0 0);
+}
